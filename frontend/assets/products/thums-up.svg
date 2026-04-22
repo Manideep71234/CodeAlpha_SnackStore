@@ -1,0 +1,22 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600' role='img' aria-label='Thums Up illustration'>
+  <defs>
+    <linearGradient id='bg' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#eff2ff'/>
+      <stop offset='55%' stop-color='#a8b5ff'/>
+      <stop offset='100%' stop-color='#3646c9'/>
+    </linearGradient>
+    <filter id='shadow' x='-20%' y='-20%' width='140%' height='140%'>
+      <feDropShadow dx='0' dy='18' stdDeviation='20' flood-color='#522f16' flood-opacity='.22'/>
+    </filter>
+  </defs>
+  <rect width='900' height='600' rx='40' fill='url(#bg)'/>
+  <circle cx='720' cy='138' r='112' fill='rgba(255,255,255,.18)'/>
+  <circle cx='164' cy='470' r='152' fill='rgba(255,255,255,.12)'/>
+  <rect x='58' y='58' width='784' height='484' rx='34' fill='rgba(255,255,255,.14)' stroke='rgba(255,255,255,.28)' filter='url(#shadow)'/>
+  <text x='90' y='116' font-family='Plus Jakarta Sans, Arial, sans-serif' font-size='26' font-weight='800' fill='rgba(42,31,23,.72)'>SnackStore</text>
+  <text x='90' y='204' font-family='Fraunces, Georgia, serif' font-size='66' font-weight='700' fill='#2a1f17'>Thums Up</text>
+  <text x='90' y='270' font-family='Plus Jakarta Sans, Arial, sans-serif' font-size='30' font-weight='700' fill='rgba(42,31,23,.78)'>Bold cola</text>
+  <text x='90' y='440' font-size='180'>🥤</text>
+  <rect x='88' y='484' width='250' height='56' rx='28' fill='rgba(42,31,23,.15)'/>
+  <text x='120' y='520' font-family='Plus Jakarta Sans, Arial, sans-serif' font-size='24' font-weight='800' fill='#2a1f17'>Fresh local artwork</text>
+</svg>

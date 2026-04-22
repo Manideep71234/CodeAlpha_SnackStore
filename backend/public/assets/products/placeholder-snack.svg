@@ -1,0 +1,16 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600' role='img' aria-label='SnackStore placeholder illustration'>
+  <defs>
+    <linearGradient id='bg' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#fff3e7'/>
+      <stop offset='55%' stop-color='#ffd2a8'/>
+      <stop offset='100%' stop-color='#ff8b4a'/>
+    </linearGradient>
+  </defs>
+  <rect width='900' height='600' rx='40' fill='url(#bg)'/>
+  <circle cx='720' cy='138' r='112' fill='rgba(255,255,255,.18)'/>
+  <rect x='58' y='58' width='784' height='484' rx='34' fill='rgba(255,255,255,.14)' stroke='rgba(255,255,255,.28)'/>
+  <text x='90' y='116' font-family='Plus Jakarta Sans, Arial, sans-serif' font-size='26' font-weight='800' fill='rgba(42,31,23,.72)'>SnackStore</text>
+  <text x='90' y='208' font-family='Fraunces, Georgia, serif' font-size='72' font-weight='700' fill='#2a1f17'>Fresh picks</text>
+  <text x='90' y='282' font-family='Plus Jakarta Sans, Arial, sans-serif' font-size='32' font-weight='700' fill='rgba(42,31,23,.78)'>Artwork loading</text>
+  <text x='90' y='450' font-size='180'>🛍️</text>
+</svg>

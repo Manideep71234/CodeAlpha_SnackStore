@@ -1,0 +1,8 @@
+<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6C69E"/><stop offset="1" stop-color="#BE5A30"/></linearGradient></defs>
+  <rect width="900" height="600" rx="40" fill="url(#g)"/>
+  <rect x="230" y="110" width="440" height="380" rx="52" fill="#FFF7EF" opacity="0.96"/>
+  <text x="450" y="280" text-anchor="middle" font-size="145">🌯</text>
+  <text x="450" y="385" text-anchor="middle" font-size="40" font-family="Arial, sans-serif" font-weight="700" fill="#6D331B">Spicy Wrap</text>
+  <text x="450" y="430" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" fill="#8C6652">Warm, loaded, bold</text>
+</svg>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnackStore | Fresh Picks Delivered Fast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="catalogue" class="page-catalogue">
+    <div class="backdrop backdrop-one"></div>
+    <div class="backdrop backdrop-two"></div>
+
+    <nav class="navbar">
+        <button class="brand" id="logo-btn" type="button">
+            <span class="brand-mark">
+                <img src="assets/snackstore-mark.svg" alt="SnackStore logo" class="brand-icon">
+            </span>
+            <span class="brand-copy">
+                <strong>SnackStore</strong>
+                <small>Fresh picks, fast delivery</small>
+            </span>
+        </button>
+
+        <div class="nav-actions" id="nav-links" style="display:none;">
+            <button class="nav-link active" type="button" data-filter="All">All Snacks</button>
+            <button class="nav-link" type="button" data-filter="Chips">Chips</button>
+            <button class="nav-link" type="button" data-filter="Cookies">Cookies</button>
+            <button class="nav-link" type="button" data-filter="Namkeen">Namkeen</button>
+            <button class="nav-link" type="button" data-filter="Cool Drinks">Cool Drinks</button>
+            <button class="nav-link" type="button" data-filter="Fast Foods">Fast Foods</button>
+            <button class="nav-link" type="button" data-filter="Chocolate">Chocolate</button>
+            <button class="nav-link" type="button" data-filter="Ice Cream">Ice Cream</button>
+            <button id="profile-btn" class="btn-ghost" type="button">My Orders</button>
+            <button id="admin-btn" class="btn-ghost" type="button" style="display:none;">Admin</button>
+            <button id="cart-btn" class="btn-primary" type="button">Cart (0)</button>
+            <button id="logout-btn" class="btn-ghost" type="button">Logout</button>
+        </div>
+    </nav>
+
+    <section class="auth-section" id="auth-section">
+        <div class="auth-shell">
+            <div class="auth-hero">
+                <span class="eyebrow">Snack delivery made better</span>
+                <h1>Build your cart from a store that feels fresh, fast, and fun.</h1>
+                <p>Browse crunchy snacks, chilled drinks, sweet treats, and hot favorites in one smooth experience.</p>
+                <div class="auth-highlights">
+                    <span>24/7 browsing</span>
+                    <span>Guest mode</span>
+                    <span>Live order tracking</span>
+                </div>
+            </div>
+
+            <div class="auth-card">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" type="button" data-auth-mode="login">Login</button>
+                    <button class="auth-tab" type="button" data-auth-mode="register">Register</button>
+                </div>
+
+                <h2 id="auth-title">Welcome back</h2>
+                <p class="auth-subtitle" id="auth-subtitle">Login to continue your snack journey.</p>
+
+                <input type="email" id="email-input" placeholder="Email address" autocomplete="email" required>
+                <input type="password" id="password-input" placeholder="Password" autocomplete="current-password" required>
+
+                <button id="auth-submit-btn" class="btn-primary auth-btn" type="button">Login</button>
+                <button class="btn-secondary auth-btn" type="button" id="guest-login-btn">Continue as Guest</button>
+                <p id="auth-message" class="status-message"></p>
+            </div>
+        </div>
+    </section>
+
+    <main id="app-shell" style="display:none;">
+        <header class="hero" id="hero-banner">
+            <div class="hero-copy">
+                <span class="eyebrow">Fresh arrivals every day</span>
+                <h1 id="hero-title">Craving something delicious?</h1>
+                <p id="hero-subtitle">Premium snacks, drinks, and fast bites with a delivery-first storefront feel.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" type="button" id="shop-now-btn">Shop now</button>
+                    <button class="btn-ghost" type="button" id="view-cart-btn">View cart</button>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <div class="panel-card">
+                    <span>Popular this week</span>
+                    <strong>Chips, Cookies, and Icy Drinks</strong>
+                    <p>Curated bundles for quick browsing and faster checkout.</p>
+                </div>
+                <div class="panel-stats">
+                    <div>
+                        <strong id="product-count">0</strong>
+                        <span>Items</span>
+                    </div>
+                    <div>
+                        <strong id="category-count">0</strong>
+                        <span>Categories</span>
+                    </div>
+                    <div>
+                        <strong id="cart-count-stat">0</strong>
+                        <span>In Cart</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="toolbar">
+            <div class="search-wrap">
+                <input type="search" id="search-input" placeholder="Search snacks, drinks, burgers, ice cream...">
+            </div>
+            <div class="toolbar-note" id="toolbar-note">Showing all items</div>
+        </section>
+
+        <section class="category-rail" id="category-rail"></section>
+
+        <section class="product-section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">Menu</span>
+                    <h2>Choose your next snack run</h2>
+                </div>
+                <p>Tap a card to add it to your cart. Quantities are tracked automatically.</p>
+            </div>
+            <main class="product-container" id="product-list"></main>
+        </section>
+
+        <section class="cart-section" id="cart-section" style="display:none;">
+            <div class="cart-wrapper">
+                <div class="cart-card">
+                    <div class="section-heading compact">
+                        <div>
+                            <span class="eyebrow">Your cart</span>
+                            <h2>Ready for checkout</h2>
+                        </div>
+                        <p id="cart-summary-text">0 items</p>
+                    </div>
+                    <div id="cart-items-container"></div>
+                    <div class="cart-summary">
+                        <div>
+                            <span>Total</span>
+                            <strong id="cart-total-price">Rs 0</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-card">
+                    <h2>Delivery details</h2>
+                    <div class="address-type-selector">
+                        <button class="address-btn active" type="button" data-address="Home">Home</button>
+                        <button class="address-btn" type="button" data-address="Office">Office</button>
+                    </div>
+                    <textarea id="delivery-address" placeholder="Enter full delivery address..." rows="4"></textarea>
+                    <button id="checkout-btn" class="btn-primary checkout-btn" type="button">Proceed to Pay</button>
+                    <p class="checkout-note">Guests can browse, but only logged-in users can place orders.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-section" id="profile-section" style="display:none;">
+            <div class="profile-card">
+                <div class="section-heading compact">
+                    <div>
+                        <span class="eyebrow">My orders</span>
+                        <h2>Tracking and history</h2>
+                    </div>
+                    <p id="profile-email"></p>
+                </div>
+                <div id="orders-container"></div>
+            </div>
+        </section>
+
+        <section class="admin-section" id="admin-section" style="display:none;">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">Admin studio</span>
+                    <h2>Manage products and order flow</h2>
+                </div>
+                <p>Use the admin account to add new products, edit existing ones, and move orders through delivery stages.</p>
+            </div>
+
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3 id="product-form-title">Add a product</h3>
+                    <input type="hidden" id="product-id-input">
+                    <div class="admin-form-grid">
+                        <input type="text" id="product-name-input" placeholder="Product name">
+                        <select id="product-category-input">
+                            <option>Chips</option>
+                            <option>Cookies</option>
+                            <option>Namkeen</option>
+                            <option>Cool Drinks</option>
+                            <option>Fast Foods</option>
+                            <option>Chocolate</option>
+                            <option>Ice Cream</option>
+                        </select>
+                        <input type="number" id="product-price-input" placeholder="Price">
+                        <input type="number" id="product-stock-input" placeholder="Stock">
+                        <input type="url" id="product-image-input" placeholder="Image URL or local path">
+                        <input type="file" id="product-image-file-input" accept="image/*">
+                        <select id="product-image-fit-input">
+                            <option value="cover">Automatic cover</option>
+                            <option value="contain">Contain</option>
+                            <option value="fill">Fill</option>
+                            <option value="none">None</option>
+                        </select>
+                        <select id="product-image-position-input">
+                            <option value="center center">Center</option>
+                            <option value="center top">Top</option>
+                            <option value="center bottom">Bottom</option>
+                            <option value="left center">Left</option>
+                            <option value="right center">Right</option>
+                        </select>
+                        <textarea id="product-description-input" placeholder="Short product description" rows="4"></textarea>
+                    </div>
+                    <div class="image-preview-wrap">
+                        <span class="eyebrow">Preview</span>
+                        <img id="product-image-preview" class="product-image-preview" alt="Product preview">
+                    </div>
+                    <div class="admin-actions">
+                        <button class="btn-primary" id="save-product-btn" type="button">Save product</button>
+                        <button class="btn-secondary" id="clear-product-btn" type="button">Clear form</button>
+                    </div>
+                    <p class="status-message" id="admin-product-message"></p>
+                </div>
+
+                <div class="admin-card">
+                    <div class="section-heading compact">
+                        <div>
+                            <span class="eyebrow">Inventory</span>
+                            <h3>Current products</h3>
+                        </div>
+                    </div>
+                    <div id="admin-products-container"></div>
+                </div>
+            </div>
+
+            <div class="admin-card admin-orders-card">
+                <div class="section-heading compact">
+                    <div>
+                        <span class="eyebrow">Orders</span>
+                        <h3>Update delivery status</h3>
+                    </div>
+                </div>
+                <div id="admin-orders-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="payment-modal" id="payment-modal" style="display:none;">
+        <div class="payment-sheet">
+            <div class="payment-header">
+                <div>
+                    <span class="eyebrow">Payment preview</span>
+                    <h2>Confirm your payment</h2>
+                </div>
+                <button class="btn-ghost" type="button" id="close-payment-btn">Close</button>
+            </div>
+            <div class="payment-summary">
+                <div>
+                    <span>Amount due</span>
+                    <strong id="payment-total">Rs 0</strong>
+                </div>
+                <div>
+                    <span>Items</span>
+                    <strong id="payment-items">0</strong>
+                </div>
+            </div>
+            <div class="payment-details" id="payment-details"></div>
+            <div class="payment-methods">
+                <button class="payment-method active" type="button" data-payment="UPI">UPI</button>
+                <button class="payment-method" type="button" data-payment="Card">Card</button>
+                <button class="payment-method" type="button" data-payment="Cash on Delivery">Cash on Delivery</button>
+            </div>
+            <div class="payment-form" id="payment-form">
+                <input type="text" id="payment-name-input" placeholder="Name on account / card">
+                <input type="text" id="payment-ref-input" placeholder="UPI ID or card number">
+                <div class="payment-row">
+                    <input type="text" id="payment-exp-input" placeholder="Expiry MM/YY">
+                    <input type="text" id="payment-cvv-input" placeholder="CVV">
+                </div>
+            </div>
+            <button class="btn-primary checkout-btn" type="button" id="confirm-payment-btn">Pay & Place Order</button>
+            <p class="checkout-note">This is a mock payment step for a smoother store demo.</p>
+        </div>
+    </div>
+
+    <div class="food-burst-layer" id="food-burst-layer"></div>
+
+    <template id="product-template">
+        <article class="product-card">
+            <img class="product-image" alt="">
+            <div class="product-info">
+                <div class="product-meta">
+                    <span class="category"></span>
+                    <span class="stock-pill"></span>
+                </div>
+                <h3></h3>
+                <p class="product-description"></p>
+                <div class="product-footer">
+                    <span class="price"></span>
+                    <button class="btn-outline add-btn" type="button">Add to Cart</button>
+                </div>
+            </div>
+        </article>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
